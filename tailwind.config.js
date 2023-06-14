@@ -8,6 +8,30 @@ module.exports = {
   darkMode: ["class"],
   theme: {
     extend: {
+      colors: {
+        prose: {
+          body: "hsl(var(--prose-body))",
+          selection: "hsl(var(--prose-selection))",
+          headings: "hsl(var(--prose-headings))",
+          lead: "hsl(var(--prose-lead))",
+          underline: "hsl(var(--prose-underline))",
+          links: "hsl(var(--prose-links))",
+          "links-muted": "hsl(var(--prose-links-muted))",
+          bold: "hsl(var(--prose-bold))",
+          counters: "hsl(var(--prose-counters))",
+          bullets: "hsl(var(--prose-bullets))",
+          hr: "hsl(var(--prose-hr))",
+          quotes: "hsl(var(--prose-quotes))",
+          "quote-borders": "hsl(var(--prose-quote-borders))",
+          captions: "hsl(var(--prose-captions))",
+          code: "hsl(var(--prose-code))",
+          "code-bg": "hsl(var(--prose-code-bg))",
+          "pre-code": "hsl(var(--prose-pre-code))",
+          "pre-bg": "hsl(var(--prose-pre-bg))",
+          "th-borders": "hsl(var(--prose-th-borders))",
+          "td-borders": "hsl(var(--prose-td-borders))",
+        },
+      },
       fontFamily: {
         sans: [
           "var(--font-inter)",

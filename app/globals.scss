@@ -1,9 +1,374 @@
-@import "reset";
+// adapted from tailwind and shadcn styles
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "reset";
+@import "layers";
 
-html,
-body {
+* {
+  @apply focus-visible:bg-clip-border focus-visible:outline-neutral-700 focus-visible:dark:outline-neutral-200;
+}
+
+:root {
   @apply text-base;
+
+  ::selection {
+    @apply bg-black/10;
+  }
+
+  &.dark {
+    ::selection {
+      @apply bg-white/10;
+    }
+  }
+}
+
+body {
+  @apply min-h-screen bg-white text-base text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300;
+}
+
+.ProseMirror {
+  @apply min-h-[calc(100vh-62px)] min-w-full whitespace-pre-wrap;
+}
+
+.ProseMirror {
+  @apply text-base text-prose-body focus:outline-none focus-visible:outline-none lg:leading-7;
+
+  * {
+    @apply focus-visible:bg-clip-border focus-visible:outline-prose-code;
+  }
+
+  ::selection {
+    @apply bg-prose-selection/10;
+  }
+
+  > :first-child {
+    @apply mt-0;
+  }
+
+  > :last-child {
+    @apply mb-0;
+  }
+
+  hr {
+    @apply my-4 border-t-[1px] border-prose-hr md:my-8;
+
+    + * {
+      @apply mt-0;
+    }
+  }
+
+  /* Code Styles */
+  /* ======================================================================= */
+  code {
+    @apply relative rounded border-0 bg-prose-code-bg p-0 px-[0.3rem] py-[0.15rem] font-mono text-sm font-medium text-prose-code;
+  }
+
+  pre {
+    @apply mb-4 mt-6 overflow-x-auto rounded-md bg-prose-pre-bg px-3 py-4 font-normal text-prose-pre-code;
+
+    code {
+      @apply rounded-none border-0 bg-transparent p-0;
+    }
+    code::before {
+      @apply content-none;
+    }
+    code::after {
+      @apply content-none;
+    }
+  }
+
+  /* Text Styles */
+  /* ======================================================================= */
+  p {
+    @apply leading-7 text-prose-body [&:not(:first-child)]:mt-6;
+  }
+
+  blockquote {
+    @apply mt-6 border-l-4 border-l-prose-quote-borders pl-6 italic [&>*]:text-prose-quotes;
+
+    code {
+      font-weight: inherit;
+    }
+  }
+
+  u,
+  ins {
+    @apply rounded-sm underline decoration-prose-underline underline-offset-4;
+
+    code {
+      @apply text-prose-links underline;
+    }
+  }
+
+  a {
+    @apply rounded-sm text-prose-links underline decoration-prose-links-muted underline-offset-4;
+
+    &:hover {
+      @apply decoration-prose-links;
+    }
+    code {
+      @apply text-prose-links underline;
+    }
+  }
+
+  strong {
+    @apply font-semibold text-prose-bold;
+  }
+
+  /* Heading Styles */
+  /* ======================================================================= */
+  h1 {
+    @apply mb-6 mt-8 scroll-m-20 text-2xl font-bold tracking-tight text-prose-headings sm:text-3xl;
+
+    strong {
+      @apply font-extrabold;
+    }
+
+    code {
+      @apply inline-block px-[0.5rem] py-[0.2rem] text-xl text-prose-headings sm:text-2xl;
+      font-weight: inherit;
+    }
+
+    + * {
+      @apply mt-0;
+    }
+  }
+
+  h2 {
+    @apply mb-6 mt-10 scroll-m-20 pb-1 text-xl font-bold tracking-tight text-prose-headings first:mt-0 sm:text-2xl;
+
+    strong {
+      @apply font-bold;
+    }
+
+    code {
+      @apply inline-block px-[0.4rem] py-[0.1rem] text-lg text-prose-headings sm:px-[0.5rem] sm:py-[0.2rem] sm:text-xl;
+      font-weight: inherit;
+    }
+
+    + * {
+      @apply mt-0;
+    }
+  }
+
+  h3 {
+    @apply mb-6 mt-8 scroll-m-20 text-lg font-bold tracking-tight text-prose-headings sm:text-xl;
+
+    strong {
+      @apply font-bold;
+    }
+
+    code {
+      @apply inline-block px-[0.4rem] py-[0.1rem] text-base text-prose-headings sm:px-[0.5rem] sm:py-[0.1rem] sm:text-lg;
+      font-weight: inherit;
+    }
+
+    + * {
+      @apply mt-0;
+    }
+  }
+
+  h4 {
+    @apply mb-6 mt-8 scroll-m-20 text-base font-bold tracking-tight text-prose-headings sm:text-lg;
+
+    strong {
+      @apply font-bold;
+    }
+
+    code {
+      @apply inline-block px-[0.4rem] py-[0.1rem] text-sm text-prose-headings sm:px-[0.5rem] sm:py-[0.1rem] sm:text-base;
+      font-weight: inherit;
+    }
+
+    + * {
+      @apply mt-0;
+    }
+  }
+
+  h5 {
+    @apply mb-6 mt-8 scroll-m-20 text-base font-bold tracking-tight text-prose-headings sm:text-lg;
+
+    strong {
+      @apply font-bold;
+    }
+
+    code {
+      @apply inline-block px-[0.4rem] py-[0.1rem] text-sm text-prose-headings sm:px-[0.5rem] sm:py-[0.1rem] sm:text-base;
+      font-weight: inherit;
+    }
+
+    + * {
+      @apply mt-0;
+    }
+  }
+
+  h6 {
+    @apply mb-6 mt-8 scroll-m-20 text-base font-bold tracking-tight text-prose-headings sm:text-lg;
+
+    strong {
+      @apply font-bold;
+    }
+
+    code {
+      @apply inline-block px-[0.4rem] py-[0.1rem] text-sm text-prose-headings sm:px-[0.5rem] sm:py-[0.1rem] sm:text-base;
+      font-weight: inherit;
+    }
+
+    + * {
+      @apply mt-0;
+    }
+  }
+
+  /* List Styles */
+  /* ======================================================================= */
+  ul {
+    @apply my-6 list-disc pl-6;
+
+    > li::marker {
+      @apply font-normal text-prose-bullets;
+    }
+    > li {
+      @apply pl-1;
+    }
+    ul,
+    ol {
+      @apply my-3;
+    }
+  }
+  > ul > li p {
+    @apply my-3;
+  }
+  > ul > li > *:first-child {
+    @apply mt-5;
+  }
+  > ul > li > *:last-child {
+    @apply mb-5;
+  }
+
+  ol {
+    @apply my-6 list-decimal pl-6;
+
+    > li::marker {
+      @apply font-normal text-prose-counters;
+    }
+    > li {
+      @apply pl-1;
+    }
+    ul,
+    ol {
+      @apply my-3;
+    }
+  }
+  > ol > li > *:first-child {
+    @apply mt-5;
+  }
+  > ol > li > *:last-child {
+    @apply mb-5;
+  }
+
+  li {
+    @apply mt-2;
+  }
+
+  /* Media Styles */
+  /* ======================================================================= */
+  img {
+    @apply my-8 rounded-md brightness-[var(--prose-media-brightness)];
+  }
+
+  video {
+    @apply relative my-8 rounded-md;
+
+    &:after {
+      @apply pointer-events-none absolute left-0 top-0 z-30 h-full w-full rounded-md border border-solid border-transparent bg-black content-[""];
+      opacity: calc(1 - var(--prose-media-brightness));
+    }
+  }
+
+  .video-iframe-container {
+    /* https://stackoverflow.com/a/35153397 : responsive video iframes */
+    @apply relative my-8 w-full pb-[56.25%]; /* 56.25% -> 16:9 aspect ratio */
+
+    &:after {
+      @apply pointer-events-none absolute left-0 top-0 z-30 h-full w-full rounded-md border border-solid border-transparent bg-black content-[""];
+      opacity: calc(1 - var(--prose-media-brightness));
+    }
+  }
+
+  .video-iframe {
+    /* https://stackoverflow.com/a/35153397 : responsive video iframes */
+    @apply absolute left-0 top-0 h-full w-full rounded-md border-none;
+  }
+
+  figure {
+    @apply my-8;
+
+    > * {
+      @apply my-0;
+    }
+
+    .video-iframe-container {
+      @apply my-0;
+    }
+  }
+  figcaption {
+    @apply mt-2 text-sm text-prose-captions;
+  }
+
+  /* Table Styles */
+  /* ======================================================================= */
+  table {
+    @apply my-6 w-full table-auto overflow-y-auto text-left;
+  }
+
+  thead {
+    @apply border-b-[1px] border-b-prose-th-borders;
+
+    th {
+      @apply p-2 align-bottom font-semibold text-prose-headings;
+    }
+    th:first-child {
+      @apply pl-0;
+    }
+    th:last-child {
+      @apply pr-0;
+    }
+  }
+
+  tbody {
+    tr {
+      @apply border-b-[1px] border-b-prose-td-borders;
+    }
+    tr:last-child {
+      @apply border-b-0;
+    }
+    td {
+      @apply p-2 align-baseline;
+    }
+    td:first-child {
+      @apply pl-0;
+    }
+    td:last-child {
+      @apply pr-0;
+    }
+  }
+
+  tfoot {
+    @apply border-t-[1px] border-prose-td-borders;
+
+    tr:last-child {
+      @apply border-b-0;
+    }
+    td {
+      @apply p-2 align-top;
+    }
+    td:first-child {
+      @apply pl-0;
+    }
+    td:last-child {
+      @apply pr-0;
+    }
+  }
 }

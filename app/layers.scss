@@ -1,0 +1,68 @@
+@layer base {
+  :root {
+    --palette-black: 0 0% 0%; // #000000
+    --palette-white: 0 0% 100%; // #ffffff
+    --palette-neutral-50: 0, 0%, 98%; // #fafafa
+    --palette-neutral-100: 0, 0%, 96%; // #f5f5f5
+    --palette-neutral-200: 0, 0%, 90%; // #e5e5e5
+    --palette-neutral-300: 0, 0%, 83%; // #d4d4d4
+    --palette-neutral-400: 0, 0%, 64%; // #a3a3a3
+    --palette-neutral-500: 0, 0%, 45%; // #737373
+    --palette-neutral-600: 0, 0%, 32%; // #525252
+    --palette-neutral-700: 0, 0%, 25%; // #404040
+    --palette-neutral-800: 0, 0%, 15%; // #262626
+    --palette-neutral-850: 0, 0%, 12%; // #1e1e1e
+    --palette-neutral-900: 0, 0%, 9%; // #171717
+    --palette-neutral-950: 0, 0%, 4%; // #0a0a0a
+
+    // semantic
+    --background: var(--palette-white);
+    --prose-selection: var(--palette-black);
+    --prose-media-brightness: 1;
+    --prose-body: var(--palette-neutral-700);
+    --prose-headings: var(--palette-neutral-900);
+    --prose-lead: var(--palette-neutral-600);
+    --prose-underline: var(--palette-neutral-900);
+    --prose-links: var(--palette-neutral-900);
+    --prose-links-muted: var(--palette-neutral-500);
+    --prose-bold: var(--palette-neutral-900);
+    --prose-counters: var(--palette-neutral-500);
+    --prose-bullets: var(--palette-neutral-300);
+    --prose-hr: var(--palette-neutral-200);
+    --prose-quotes: var(--palette-neutral-500);
+    --prose-quote-borders: var(--palette-neutral-200);
+    --prose-captions: var(--palette-neutral-500);
+    --prose-code: var(--palette-neutral-700);
+    --prose-code-bg: var(--palette-neutral-100);
+    --prose-pre-code: var(--palette-neutral-600);
+    --prose-pre-bg: var(--palette-neutral-100);
+    --prose-th-borders: var(--palette-neutral-300);
+    --prose-td-borders: var(--palette-neutral-200);
+  }
+
+  .dark {
+    // semantic
+    --background: var(--palette-neutral-900);
+    --prose-selection: var(--palette-white);
+    --prose-media-brightness: 0.9;
+    --prose-body: var(--palette-neutral-300);
+    --prose-headings: var(--palette-neutral-200);
+    --prose-lead: var(--palette-neutral-400);
+    --prose-underline: var(--palette-neutral-200);
+    --prose-links: var(--palette-neutral-200);
+    --prose-links-muted: var(--palette-neutral-400);
+    --prose-bold: var(--palette-neutral-200);
+    --prose-counters: var(--palette-neutral-400);
+    --prose-bullets: var(--palette-neutral-600);
+    --prose-hr: var(--palette-neutral-700);
+    --prose-quotes: var(--palette-neutral-400);
+    --prose-quote-borders: var(--palette-neutral-700);
+    --prose-captions: var(--palette-neutral-400);
+    --prose-code: var(--palette-neutral-200);
+    --prose-code-bg: var(--palette-neutral-800);
+    --prose-pre-code: var(--palette-neutral-300);
+    --prose-pre-bg: var(--palette-neutral-850);
+    --prose-th-borders: var(--palette-neutral-600);
+    --prose-td-borders: var(--palette-neutral-700);
+  }
+}
