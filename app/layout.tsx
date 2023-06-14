@@ -1,7 +1,5 @@
 import "./globals.scss";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { inter, SFMono } from "../assets/fonts";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,8 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${SFMono.variable} font-sans`}>
+        {children}
+      </body>
     </html>
   );
 }
