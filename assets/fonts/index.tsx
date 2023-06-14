@@ -53,12 +53,12 @@ export const inter = localFont({
       style: "italic",
     },
     {
-      path: "./inter/Inter-Semibold.woff",
+      path: "./inter/Inter-SemiBold.woff",
       weight: "600",
       style: "normal",
     },
     {
-      path: "./inter/Inter-SemiboldItalic.woff",
+      path: "./inter/Inter-SemiBoldItalic.woff",
       weight: "600",
       style: "italic",
     },
