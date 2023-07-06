@@ -2,15 +2,8 @@
 
 import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
-import { baseKeymap } from "prosemirror-commands";
-import { history } from "prosemirror-history";
-import { keymap } from "prosemirror-keymap";
-import { dropCursor } from "prosemirror-dropcursor";
-import { gapCursor } from "prosemirror-gapcursor";
 import { schema } from "./schema";
-import { buildKeymap } from "./keymap";
-import { buildInputRules } from "./inputrules";
-
+import { plugins } from "./plugins";
 import { useCallback, useEffect } from "react";
 
 const ProseMirrorEditor = () => {
@@ -65,15 +58,6 @@ const ProseMirrorEditor = () => {
     if (
       editorElement?.children.length === 0 // prevents contenteditable duplication
     ) {
-      const plugins = [
-        history(),
-        buildInputRules(schema),
-        keymap(buildKeymap(schema)),
-        keymap(baseKeymap),
-        dropCursor(),
-        gapCursor(),
-      ];
-
       /* generate an empty doc conforming to the schema & a default selection at the doc's start */
       /* plugins are registered when creating a state (b/c they get access to state transactions) */
       const state = EditorState.create({
