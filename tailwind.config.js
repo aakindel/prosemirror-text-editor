@@ -25,7 +25,7 @@ module.exports = {
           "quote-borders": "hsl(var(--prose-quote-borders))",
           captions: "hsl(var(--prose-captions))",
           code: "hsl(var(--prose-code))",
-          "code-bg": "hsl(var(--prose-code-bg))",
+          "code-bg": "hsla(var(--prose-code-bg), 0.1)",
           "pre-code": "hsl(var(--prose-pre-code))",
           "pre-bg": "hsl(var(--prose-pre-bg))",
           "th-borders": "hsl(var(--prose-th-borders))",

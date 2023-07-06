@@ -74,11 +74,14 @@ const ProseMirrorEditor = () => {
         gapCursor(),
       ];
 
+      /* generate an empty doc conforming to the schema & a default selection at the doc's start */
+      /* plugins are registered when creating a state (b/c they get access to state transactions) */
       const state = EditorState.create({
         schema,
         plugins,
       });
 
+      /* create a view for the state and append to `editorElement` */
       new EditorView(editorElement, { state });
     }
 

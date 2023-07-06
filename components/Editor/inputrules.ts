@@ -1,5 +1,6 @@
 // adapted from https://github.com/ProseMirror/prosemirror-example-setup/blob/master/src/inputrules.ts
 
+/* an input rule is something that should happen when input matching a given pattern is typed */
 import {
   inputRules,
   wrappingInputRule,

@@ -29,7 +29,7 @@ body {
 }
 
 .ProseMirror {
-  @apply min-h-[calc(100vh-62px)] min-w-full whitespace-pre-wrap;
+  @apply min-h-[calc(100vh-62px)] min-w-full whitespace-pre-wrap pb-60;
 }
 
 .ProseMirror {
@@ -52,7 +52,7 @@ body {
   }
 
   hr {
-    @apply my-4 border-t-[1px] border-prose-hr md:my-8;
+    @apply my-8 border-t-[1px] border-prose-hr;
 
     + * {
       @apply mt-0;
@@ -66,7 +66,7 @@ body {
   }
 
   pre {
-    @apply mb-4 mt-6 overflow-x-auto rounded-md bg-prose-pre-bg px-3 py-4 font-normal text-prose-pre-code;
+    @apply my-4 overflow-x-auto rounded-md bg-prose-pre-bg px-3 py-4 font-normal text-prose-pre-code;
 
     code {
       @apply rounded-none border-0 bg-transparent p-0;
@@ -82,11 +82,16 @@ body {
   /* Text Styles */
   /* ======================================================================= */
   p {
-    @apply leading-7 text-prose-body [&:not(:first-child)]:mt-6;
+    @apply leading-7 text-prose-body [&:not(:first-child)]:mt-3;
+
+    + ol,
+    + ul {
+      @apply mt-0;
+    }
   }
 
   blockquote {
-    @apply mt-6 border-l-4 border-l-prose-quote-borders pl-6 italic [&>*]:text-prose-quotes;
+    @apply my-4 border-l-4 border-l-prose-quote-borders pl-6 italic [&>*]:text-prose-quotes;
 
     code {
       font-weight: inherit;
@@ -94,7 +99,8 @@ body {
   }
 
   u,
-  ins {
+  ins,
+  .prosemirror-underline {
     @apply rounded-sm underline decoration-prose-underline underline-offset-4;
 
     code {
@@ -137,7 +143,7 @@ body {
   }
 
   h2 {
-    @apply mb-6 mt-10 scroll-m-20 pb-1 text-xl font-bold tracking-tight text-prose-headings first:mt-0 sm:text-2xl;
+    @apply mb-6 mt-8 scroll-m-20 pb-1 text-xl font-bold tracking-tight text-prose-headings first:mt-0 sm:text-2xl;
 
     strong {
       @apply font-bold;
@@ -224,7 +230,7 @@ body {
   /* List Styles */
   /* ======================================================================= */
   ul {
-    @apply my-6 list-disc pl-6;
+    @apply my-1 list-disc pl-6;
 
     > li::marker {
       @apply font-normal text-prose-bullets;
@@ -234,21 +240,21 @@ body {
     }
     ul,
     ol {
-      @apply my-3;
+      @apply my-2;
     }
   }
   > ul > li p {
-    @apply my-3;
+    @apply my-2;
   }
   > ul > li > *:first-child {
-    @apply mt-5;
+    @apply mt-2;
   }
   > ul > li > *:last-child {
-    @apply mb-5;
+    @apply mb-2;
   }
 
   ol {
-    @apply my-6 list-decimal pl-6;
+    @apply my-1 list-decimal pl-6;
 
     > li::marker {
       @apply font-normal text-prose-counters;
@@ -258,14 +264,14 @@ body {
     }
     ul,
     ol {
-      @apply my-3;
+      @apply my-2;
     }
   }
   > ol > li > *:first-child {
-    @apply mt-5;
+    @apply mt-2;
   }
   > ol > li > *:last-child {
-    @apply mb-5;
+    @apply mb-2;
   }
 
   li {
@@ -275,11 +281,11 @@ body {
   /* Media Styles */
   /* ======================================================================= */
   img {
-    @apply my-8 rounded-md brightness-[var(--prose-media-brightness)];
+    @apply my-4 rounded-md brightness-[var(--prose-media-brightness)];
   }
 
   video {
-    @apply relative my-8 rounded-md;
+    @apply relative my-4 rounded-md;
 
     &:after {
       @apply pointer-events-none absolute left-0 top-0 z-30 h-full w-full rounded-md border border-solid border-transparent bg-black content-[""];
@@ -289,7 +295,7 @@ body {
 
   .video-iframe-container {
     /* https://stackoverflow.com/a/35153397 : responsive video iframes */
-    @apply relative my-8 w-full pb-[56.25%]; /* 56.25% -> 16:9 aspect ratio */
+    @apply relative my-4 w-full pb-[56.25%]; /* 56.25% -> 16:9 aspect ratio */
 
     &:after {
       @apply pointer-events-none absolute left-0 top-0 z-30 h-full w-full rounded-md border border-solid border-transparent bg-black content-[""];
@@ -303,7 +309,7 @@ body {
   }
 
   figure {
-    @apply my-8;
+    @apply my-4;
 
     > * {
       @apply my-0;
@@ -320,55 +326,18 @@ body {
   /* Table Styles */
   /* ======================================================================= */
   table {
-    @apply my-6 w-full table-auto overflow-y-auto text-left;
-  }
-
-  thead {
-    @apply border-b-[1px] border-b-prose-th-borders;
-
-    th {
-      @apply p-2 align-bottom font-semibold text-prose-headings;
-    }
-    th:first-child {
-      @apply pl-0;
-    }
-    th:last-child {
-      @apply pr-0;
-    }
+    @apply my-4 w-full table-auto overflow-y-auto text-left;
   }
 
   tbody {
     tr {
-      @apply border-b-[1px] border-b-prose-td-borders;
+      @apply border border-b-prose-td-borders;
     }
-    tr:last-child {
-      @apply border-b-0;
-    }
-    td {
-      @apply p-2 align-baseline;
-    }
-    td:first-child {
-      @apply pl-0;
-    }
-    td:last-child {
-      @apply pr-0;
-    }
-  }
-
-  tfoot {
-    @apply border-t-[1px] border-prose-td-borders;
-
-    tr:last-child {
-      @apply border-b-0;
+    th {
+      @apply border border-prose-td-borders p-1.5 align-bottom font-semibold text-prose-headings;
     }
     td {
-      @apply p-2 align-top;
-    }
-    td:first-child {
-      @apply pl-0;
-    }
-    td:last-child {
-      @apply pr-0;
+      @apply border border-prose-td-borders p-1.5 align-baseline;
     }
   }
 }
