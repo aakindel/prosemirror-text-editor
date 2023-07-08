@@ -260,6 +260,86 @@ export const schema = new Schema({
         return ["br"];
       },
     },
+
+    /**
+     * table:
+     * - does not allow gap cursor, so cannot be selected with a gap cursor
+     * - contains one or more 'table_row' nodes
+     * - has the 'table' table role
+     * - is isolating, so regular editing operations (e.g. backspacing) won't cross its sides
+     * - is in the 'block' node group
+     * - is selected when <table> dom elements are parsed (pasted or dragged in)
+     * - is rendered as an HTML <tbody> tag in the zero ‘hole’ inside a <table> tag
+     */
+    table: {
+      allowGapCursor: false,
+      content: "table_row+",
+      tableRole: "table",
+      isolating: true,
+      group: "block",
+      parseDOM: [{ tag: "table" }],
+      toDOM() {
+        return ["table", ["tbody", 0]];
+      },
+    },
+
+    /**
+     * table_row:
+     * - does not allow gap cursor, so cannot be selected with a gap cursor
+     * - contains zero or more 'table_cell' or 'table_header' nodes
+     * - has the 'row' table role
+     * - is selected when <tr> dom elements are parsed (pasted or dragged in)
+     * - is rendered as an HTML <tr> tag in the zero ‘hole’
+     */
+    table_row: {
+      allowGapCursor: false,
+      content: "(table_cell | table_header)*",
+      tableRole: "row",
+      parseDOM: [{ tag: "tr" }],
+      toDOM() {
+        return ["tr", 0];
+      },
+    },
+
+    /**
+     * table_cell:
+     * - does not allow gap cursor, so cannot be selected with a gap cursor
+     * - contains one or more 'block' nodes
+     * - has the 'cell' table role
+     * - is isolating, so regular editing operations (e.g. backspacing) won't cross its sides
+     * - is selected when <td> dom elements are parsed (pasted or dragged in)
+     * - is rendered as an HTML <td> tag in the zero ‘hole’
+     */
+    table_cell: {
+      allowGapCursor: false,
+      content: "block+",
+      tableRole: "cell",
+      isolating: true,
+      parseDOM: [{ tag: "td" }],
+      toDOM() {
+        return ["td", 0];
+      },
+    },
+
+    /**
+     * table_header:
+     * - does not allow gap cursor, so cannot be selected with a gap cursor
+     * - contains one or more 'block' nodes
+     * - has the 'header_cell' table role
+     * - is isolating, so regular editing operations (e.g. backspacing) won't cross its sides
+     * - is selected when <th> dom elements are parsed (pasted or dragged in)
+     * - is rendered as an HTML <th> tag in the zero ‘hole’
+     */
+    table_header: {
+      allowGapCursor: false,
+      content: "block+",
+      tableRole: "header_cell",
+      isolating: true,
+      parseDOM: [{ tag: "th" }],
+      toDOM() {
+        return ["th", 0];
+      },
+    },
   },
 
   /* Marks are used to add extra styling or other information to inline content. A schema must 
