@@ -1,4 +1,4 @@
-// adapted from https://github.com/ProseMirror/prosemirror-markdown/blob/master/src/schema.ts
+// adapted from https://github.com/ProseMirror/prosemirror-markdown/blob/master/src/schema.ts; https://github.com/ProseMirror/prosemirror-tables
 
 /* The schema describes the kind of nodes that may occur in the doc & the way they are nested. */
 /* Every schema must at least define a top-level node type (which defaults to the name "doc", 
@@ -342,7 +342,12 @@ export const schema = new Schema({
     },
   },
 
-  /* Marks are used to add extra styling or other information to inline content. A schema must 
+  /* A mark is a piece of information that can be attached to a node, such as it being emphasized,
+     in code font, or a link. It has a type and optionally a set of attributes that provide further 
+     information (such as the target of the link). Marks are created through a Schema, 
+     which controls which types exist and which attributes they have. */
+  /* Marks are used to add extra styling or other information to inline content. They are 
+     associated with nodes to signify things like emphasis or being part of a link. A schema must 
      declare all mark types it allows in its schema. By default, nodes with inline content allow 
      all schema-defined marks to be applied to their children. You can configure this with the 
      marks prop on your node spec ({..., marks: "_"} = all marks) ({..., marks: ""} = no marks). */
