@@ -1,31 +1,37 @@
 // adapted from tailwind and shadcn styles
 
+@import "reset";
+@import "layers";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "reset";
-@import "layers";
 
-* {
-  @apply focus-visible:bg-clip-border focus-visible:outline-neutral-700 focus-visible:dark:outline-neutral-200;
-}
-
-:root {
-  @apply text-base;
-
-  ::selection {
-    @apply bg-black/10;
+@layer base {
+  * {
+    @apply border-neutral-200 focus-visible:bg-clip-border focus-visible:outline-neutral-700 dark:border-neutral-800 focus-visible:dark:outline-neutral-200;
   }
 
-  &.dark {
+  :root {
+    @apply text-base;
+
     ::selection {
-      @apply bg-white/10;
+      @apply bg-black/10;
+    }
+
+    -webkit-tap-highlight-color: rgb(0 0 0 / 0.1);
+
+    &.dark {
+      ::selection {
+        @apply bg-white/10;
+      }
+
+      -webkit-tap-highlight-color: rgb(255 255 255 / 0.1);
     }
   }
-}
 
-body {
-  @apply min-h-screen bg-white text-base text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300;
+  body {
+    @apply min-h-screen bg-white text-base text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50;
+  }
 }
 
 .ProseMirror {
@@ -57,6 +63,11 @@ body {
     + * {
       @apply mt-0;
     }
+  }
+
+  p > img ~ .ProseMirror-trailingBreak,
+  p > img ~ .ProseMirror-separator {
+    display: none;
   }
 
   /* Code Styles */
@@ -281,7 +292,7 @@ body {
   /* Media Styles */
   /* ======================================================================= */
   img {
-    @apply my-4 rounded-md brightness-[var(--prose-media-brightness)];
+    @apply my-6 rounded-md brightness-[var(--prose-media-brightness)];
   }
 
   video {
