@@ -46,7 +46,9 @@ const ProseMirrorEditor = () => {
       }
     });
 
-    observer.observe(ref, { childList: true });
+    if (ref instanceof HTMLElement) {
+      observer.observe(ref, { childList: true });
+    }
   }, []);
 
   useEffect(() => {
