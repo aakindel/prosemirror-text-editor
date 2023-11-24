@@ -3,9 +3,10 @@ import { history } from "prosemirror-history";
 import { keymap } from "prosemirror-keymap";
 import { dropCursor } from "prosemirror-dropcursor";
 import { gapCursor } from "prosemirror-gapcursor";
-import { schema } from "./schema";
-import { buildKeymap } from "./keymap";
-import { buildInputRules } from "./inputrules";
+import { schema } from "../schema";
+import { buildKeymap } from "../keymap";
+import { buildInputRules } from "../inputrules";
+import { disableDefaultTabBehavior } from "./disableDefaultTabBehavior";
 
 /* when a user types or otherwise interacts with the view, a transaction is dispatched, i.e.:
    - the keypress/interaction creates a state transaction
@@ -20,4 +21,5 @@ export const plugins = [
   keymap(baseKeymap), // binds actions to keyboard input
   dropCursor(),
   gapCursor(),
+  disableDefaultTabBehavior(),
 ];
